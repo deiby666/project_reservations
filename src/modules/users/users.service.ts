@@ -9,7 +9,7 @@ import { Model } from 'mongoose';
 export class UsersService {
   constructor(
     @InjectModel(User.name)
-    private reservationModel: Model<User>,
+    private readonly reservationModel: Model<User>,
   ) {}
 
   async create(createUserDto: CreateUserDto) {
