@@ -7,13 +7,13 @@ import { ConfigType } from '@nestjs/config';
 @Module({
   imports: [
     MongooseModule.forRootAsync({
-        useFactory: (ConfigService: ConfigType<typeof dbConfig>) =>{
-            const { db } = ConfigService;
-            const uriDb = `${db.mongoHost}${db.user}:${db.password}@${db.cluster}/${db.name}?retryWrites=true&w=majority`;
-            return { uri: uriDb };
-        },
-        inject: [dbConfig.KEY]
-    })
+      useFactory: (ConfigService: ConfigType<typeof dbConfig>) => {
+        const { db } = ConfigService;
+        const uriDb = `${db.mongoHost}${db.user}:${db.password}@${db.cluster}/${db.name}?retryWrites=true&w=majority`;
+        return { uri: uriDb };
+      },
+      inject: [dbConfig.KEY],
+    }),
   ],
 })
 export class persistenceModule {}

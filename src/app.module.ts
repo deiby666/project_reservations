@@ -8,9 +8,9 @@ import dbConfig from './modules/persistence/db-config';
     ConfigModule.forRoot({
       isGlobal: true,
       load: [dbConfig],
-      envFilePath: ".env"
+      envFilePath: '.env',
     }),
-    persistenceModule
+    persistenceModule,
   ],
 })
 export class AppModule {}
