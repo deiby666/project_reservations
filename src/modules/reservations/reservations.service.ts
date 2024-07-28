@@ -9,8 +9,8 @@ import { Model } from 'mongoose';
 export class ReservationsService {
   constructor(
     @InjectModel(Reservation.name)
-    private reservationModel: Model<Reservation>
-  ){}
+    private reservationModel: Model<Reservation>,
+  ) {}
 
   async create(createReservationDto: CreateReservationDto) {
     const createdReservation = new this.reservationModel(createReservationDto);
@@ -18,20 +18,20 @@ export class ReservationsService {
   }
 
   findAll() {
-    return this.reservationModel.find()
+    return this.reservationModel.find();
   }
 
   findOne(id: number) {
-    return this.reservationModel.findById(id)
+    return this.reservationModel.findById(id);
   }
-  
+
   update(id: number, updateReservationDto: UpdateReservationDto) {
     return this.reservationModel.findByIdAndUpdate(id, updateReservationDto, {
-      new: true,  
-    })
+      new: true,
+    });
   }
 
   remove(id: number) {
-    return this.reservationModel.findByIdAndDelete(id)
+    return this.reservationModel.findByIdAndDelete(id);
   }
 }
