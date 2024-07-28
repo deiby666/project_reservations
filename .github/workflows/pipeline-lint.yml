@@ -28,8 +28,8 @@ jobs:
       - name: Read skip-tests configuration
         id: read_config
         run: |
-          skip_tests=$(jq '.skipTests' skip-tests.config.json)
-          echo "RUN_TESTS=${skip_tests}" >> $GITHUB_ENV
+          $skip_tests = (Get-Content skip-tests.config.json | ConvertFrom-Json).skipTests
+          echo "RUN_TESTS=$skip_tests" >> $env:GITHUB_ENV
 
       - name: Run ESLint
         run: npm run lint
@@ -37,5 +37,3 @@ jobs:
       - name: Run unit tests
         if: env.RUN_TESTS == 'true'
         run: npm test
-
-
